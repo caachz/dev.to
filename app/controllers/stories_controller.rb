@@ -34,14 +34,22 @@ class StoriesController < ApplicationController
   end
 
   def show
+    #creates instance variable with boolean of true
     @story_show = true
+    #finds article by id and sets path using username and slug value
     if (@article = Article.find_by(path: "/#{params[:username].downcase}/#{params[:slug]}")&.decorate)
+    #redirects to below method
       handle_article_show
+    #if cant find using username path, find article by the slug
     elsif (@article = Article.find_by(slug: params[:slug])&.decorate)
+      #call below method
       handle_possible_redirect
+    # if cant find article at all
     else
+      #find podcast and podcast episode using the username and then the slug value
       @podcast = Podcast.available.find_by!(slug: params[:username])
       @episode = PodcastEpisode.available.find_by!(slug: params[:slug])
+      # call below method
       handle_podcast_show
     end
   end
@@ -83,15 +91,22 @@ class StoriesController < ApplicationController
   end
 
   def handle_possible_redirect
+    #manipulate raw username to remove @ and make all lower
     potential_username = params[:username].tr("@", "").downcase
+    #find user using potential user name above as previous value for username
     @user = User.find_by("old_username = ? OR old_old_username = ?", potential_username, potential_username)
+    # if finds valid user and an article of that user that matches slug value
     if @user&.articles&.find_by(slug: params[:slug])
+      # redirect to that user article path and exit loop
       redirect_to URI.parse("/#{@user.username}/#{params[:slug]}").path
       return
+    # if can find user and article but orginization matches article org
     elsif (@organization = @article.organization)
+      # redirect to orgs page with slug params and loop
       redirect_to URI.parse("/#{@organization.slug}/#{params[:slug]}").path
       return
     end
+    #if cant find any valid info render not found method to show error page
     not_found
   end
 
@@ -196,11 +211,13 @@ class StoriesController < ApplicationController
   end
 
   def handle_podcast_show
+    # redirected here if find podcast find episode and set instance variables and create comment
     set_surrogate_key_header @episode.record_key
     @episode = @episode.decorate
     @podcast_episode_show = true
     @comments_to_show_count = 25
     @comment = Comment.new
+    # render podcast episodes show template
     render template: "podcast_episodes/show"
     nil
   end
@@ -215,11 +232,15 @@ class StoriesController < ApplicationController
   end
 
   def handle_article_show
+    #redirected here if finds valid article
     assign_article_show_variables
+    #call set surrogate method with record_key
     set_surrogate_key_header @article.record_key
+    #call below method to redirect to internal/article show page
     redirect_if_show_view_param
+    #if above method performed successfully exit here- this is action contoller method
     return if performed?
-
+    #if not performed  render main article show view
     render template: "articles/show"
   end
 
@@ -236,12 +257,17 @@ class StoriesController < ApplicationController
   end
 
   def assign_article_show_variables
+    #use this method if successful article found
+    #set article_show instance variable to true value
     @article_show = true
+    #generate number is variant_version not in params, find comments, find users, return not found if permission_denied?
     @variant_number = params[:variant_version] || (user_signed_in? ? 0 : rand(2))
     assign_user_and_org
+    #if article has tag that includes discuss show 50 comments if not show 30 comments
     @comments_to_show_count = @article.cached_tag_list_array.include?("discuss") ? 50 : 30
     assign_second_and_third_user
     not_found if permission_denied?
+    #create new comment using article and comments
     @comment = Comment.new(body_markdown: @article&.comment_template)
   end
 
@@ -250,11 +276,14 @@ class StoriesController < ApplicationController
   end
 
   def assign_user_and_org
+    #use this method in assign article show variables to find user associated with article or assigning it not_found
     @user = @article.user || not_found
+    #find organization associated with article and assign to variable
     @organization = @article.organization if @article.organization_id.present?
   end
 
   def assign_second_and_third_user
+    #finds a second and third user if article has multiple users associated
     return if @article.second_user_id.blank?
 
     @second_user = User.find(@article.second_user_id)

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionView::MissingTemplate, with: :routing_error
 
   def not_found
+    #use in stories controller to return article and user not found errors
     raise ActiveRecord::RecordNotFound, "Not Found"
   end
 

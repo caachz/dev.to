@@ -1,3 +1,4 @@
+// creates promise and waits until skeleton of html page has loaded
 HTMLDocument.prototype.ready = new Promise(resolve => {
   if (document.readyState !== 'loading') {
     return resolve();

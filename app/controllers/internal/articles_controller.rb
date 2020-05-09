@@ -24,6 +24,7 @@ class Internal::ArticlesController < Internal::ApplicationController
   end
 
   def show
+    #finds the correct article by id and passes it to the view to display
     @article = Article.find(params[:id])
   end
 
