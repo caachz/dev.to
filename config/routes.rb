@@ -36,7 +36,6 @@ Rails.application.routes.draw do
 
   namespace :internal do
     get "/", to: redirect("/internal/articles")
-
     resources :articles, only: %i[index show update]
     resources :broadcasts, only: %i[index new create edit update]
     resources :buffer_updates, only: %i[create update]
@@ -399,8 +398,9 @@ Rails.application.routes.draw do
   get "/:username/comment/:id_code/delete_confirm" => "comments#delete_confirm"
   get "/:username/comment/:id_code/mod" => "moderations#comment"
   get "/:username/comment/:id_code/settings", to: "comments#settings"
-
+    # This is the route that sends the user to the article page
   get "/:username/:slug/:view" => "stories#show",
+    # Prevents bad uri paths
       :constraints => { view: /moderate/ }
   get "/:username/:slug/mod" => "moderations#article"
   get "/:username/:slug/manage" => "articles#manage"
