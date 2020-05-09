@@ -1,18 +1,30 @@
+<%# renders the article title but doesn't display it to user %>
 <% title @article.title %>
 
+<%# imports some javascript from the web%>
 <%= render "shared/webcomponents_loader_script" %>
+<%#  imports the javascript from clipboard copy file%>
+<%# handling connecting the browser clipboard to computer clipboard??? %>
 <%= javascript_pack_tag "clipboardCopy", defer: true %>
 
+<%# caches the response and expires that every 30 hours %>
 <% cache("content-related-optional-scripts-#{@article.id}-#{@article.updated_at}", expires_in: 30.hours) do %>
+<%# if the article includes the ltag_gist-liquid-tag tag%>
   <% if @article.processed_html.include? "ltag_gist-liquid-tag" %>
+  <!-- import a javascript function form this location -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"
             integrity="sha256-xOIPU/XvDtRLeDQ3qj9GOKmlbMSqKa6D7ZIS6ygHBSo="
             crossorigin="anonymous" defer></script>
     <script defer>
+       // sets this variable. This is a node list. this function is going to load every so often. Checking every 500 miliseconds until it gets a response
       var waitingOnPostscribe = setInterval(function () {
+        // postscribe is undefinied until loaded so typecheck ensures it is loaded with the proper data type
         if (typeof (postscribe) === "function") {
+          // stops running this function and clears the interval
           clearInterval(waitingOnPostscribe);
+          // else goes through the docuement and grabs all elements with the ltag_gist-liquid-tag (returns node list)
           var els = document.getElementsByClassName("ltag_gist-liquid-tag");
+          // loops through each node element and runs postscribe which was imported via script tag
           for (var i = 0; i < els.length; i++) {
             var current = els[i];
             postscribe(current, current.firstElementChild.outerHTML, {
@@ -31,16 +43,20 @@
     </script>
   <% end %>
 
+<%# if the article includes runkit-element include this javascript tag%>
   <% if @article.processed_html.include? "runkit-element" %>
     <%= javascript_include_tag "https://embed.runkit.com" %>
   <% end %>
 <% end %>
 
+<%# if user is an internal user  %>
 <% if internal_navigation? %>
+<%# assigns data passing that doesn't show up on the page. Likely related to SEO%>
     <link rel="canonical" href="<%= @article.canonical_url.presence || "https://#{ApplicationConfig['APP_DOMAIN']}#{@article.path}" %>" />
     <meta name="description" content="<%= @article.description_and_tags %>">
     <meta name="keywords" content="<%= @article.cached_tag_list %>, software, coding, development, engineering, inclusive, community">
 <% else %>
+<%# assigns data passing that doesn't show up on the page %>
   <%= content_for :page_meta do %>
     <link rel="canonical" href="<%= @article.canonical_url.presence || "https://#{ApplicationConfig['APP_DOMAIN']}#{@article.path}" %>" />
     <meta name="description" content="<%= @article.description_and_tags %>">
@@ -57,6 +73,7 @@
     <meta name="twitter:description" content="<%= @article.description || "An article from the community" %>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:widgets:new-embed-design" content="on">
+
     <% if @article.published %>
       <meta property="og:image" content="<%= article_social_image_url(@article) %>" />
       <meta name="twitter:image:src" content="<%= article_social_image_url(@article) %>">
@@ -68,19 +85,25 @@
     <% end %>
   <% end %>
 <% end %>
-
+<!-- all meta data likely to help SEO -->
 <div class="home">
   <div
+  <%# home div is a container with two classes, container and article. it assigns data that is passed in via the article object %>
+  <%# set up basic data tags %>
     class="container article"
     id="article-show-container"
     data-author-id="<%= @article.user_id %>"
     data-live="<%= @article.live_now %>"
     data-path="<%= @article.path %>"
     data-published="<%= @article.published? %>">
+    <%# if a video is there but not loaded show video transcoding in progress %>
     <% if @article.video_state == "PROGRESSING" %>
       <h1 style="text-align:center;">⏳ Video Transcoding In Progress ⏳</h1>
     <% end %>
+    <!-- everything within this article tag has to do with that specific article object -->
+    <!-- likely used for SEO -->
     <article itemscope itemtype="http://schema.org/Article" itemprop="mainEntity">
+      <!-- passes the information from the @article to the itemscope variable -->
       <meta itemprop="url" content="https://dev.to<%= @article.path %>">
       <meta itemprop="image" content="<%= article_social_image_url(@article) %>">
       <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
@@ -92,25 +115,36 @@
         <meta itemprop="name" content="DEV Community">
       </div>
       <section>
+        <!-- if the article is not published -->
         <% if !@article.published %>
+        <%# add a link to edit the article and print this notice to the user%>
           <a href="<%= @article.path %>/edit" class="unpublished">
             Unpublished Post. This URL is public but secret, so share at your own discretion.
             <em style="display: inline-block;">Click to edit.</em>
           </a>
         <% end %>
+        <%# if the article has a video %>
         <% if @article.video.present? %>
+        <%# render a video player %>
           <%= render "articles/video_player", meta_tags: true, article: @article %>
+          <%# else if there is an image present %>
         <% elsif @article.main_image.present? %>
+        <%# apply the image with this styling %>
           <div class="image image-final" style="background-color:<%= @article.main_image_background_hex_color %>;background-image:url(<%= cloud_cover_url(@article.main_image) %>)">
           </div>
+          <%# otherwise leave this space blank %>
         <% else %>
           <div class="blank-space"></div>
         <% end %>
       </section>
+      <!-- there is a header under the image with the title -->
       <header class="title" id="main-title">
+        <!-- if there is an organization  -->
         <% if @organization %>
+        <%# print the organizations logo image %>
           <a href="<%= @organization.path %>" class="org-branded-title-link">
             <div class="org-branded-title">
+              <!-- create a progile image object with set width assigned to ortanization -->
               <img src="<%= ProfileImage.new(@organization).get(width: 50) %>" class="org-pic" alt="<%= @organization.name %> profile image"> <%= @organization.name %>
             </div>
           </a>
@@ -119,13 +153,16 @@
           <%= @article.title %>
         </h1>
         <h3>
+          <!-- is a span with same item prop from schema. Likely more SEO stuff for the author info and profile pic -->
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
             <meta itemprop="url" content="https://dev.to/<%= @user.username %>">
+            <%# link to the users profile %>
             <a href="/<%= @user.username %>" class="author">
               <img class="profile-pic" src="<%= ProfileImage.new(@user).get(width: 50) %>" alt="<%= @user.username %> profile image" />
               <span itemprop="name"><%= @user.name %></span>
             </a>
           </span>
+          <%# if they have any of these social media profiles linked to their account display it under the article %>
           <% if @user.twitter_username.present? %>
             <a href="http://twitter.com/<%= @user.twitter_username %>"><%= image_tag_or_inline_svg_tag "twitter", width: 18, height: 18 %></a>
           <% end %>
@@ -135,14 +172,18 @@
           <% if @article.published_timestamp.present? %>
             <time itemprop="datePublished" datetime="<%= @article.published_timestamp %>"><%= @article.readable_publish_date %></time>
           <% end %>
+          <%# if there is a coauthor present display all fo their info %>
           <% if @second_user.present? %>
             <em>with <b><a href="<%= @second_user.path %>"><%= @second_user.name %></a></b></em>
           <% end %>
+          <%# if there is a third coauthor present print their info %>
           <% if @third_user.present? %>
             <em> and <b><a href="<%= @third_user.path %>"><%= @third_user.name %></a></b></em>
           <% end %>
+          <%# if the article has been updated show the date updated %>
           <% if should_show_updated_on?(@article) %>
             <span><em>Updated on <time itemprop="dateModified" datetime="<%= @article.edited_at&.utc&.iso8601 %>"><%= @article.edited_at&.strftime("%b %d, %Y") %></time></em></span>
+            <%# if this post was posted on any other media it will show original source %>
           <% elsif should_show_crossposted_on?(@article) %>
             <span>
               <em>
@@ -155,59 +196,87 @@
               </em>
             </span>
           <% end %>
+          <!-- displays article reading time or 1 if the article reading time is less than 1 min  -->
           <span class="published-at">・<%= @article.reading_time < 1 ? 1 : @article.reading_time %> min read</span>
           <span class="action-space" id="action-space"></span>
         </h3>
+        <%# caches the articles tags list for 30 hours %>
+        <%# potentially attaches article tags to the user profile for 30 hours to give recommended articles %>
         <% cache("main-article-tags-#{@article.cached_tag_list}", expires_in: 30.hours) do %>
           <div class="tags">
+            <%# go through each tag and finds the right color for that tag and dispalys it with the correct link for that tag %>
             <% @article.cached_tag_list_array.each do |tag| %>
               <% tag_hash = tag_colors(tag) %>
               <a class="tag" href="/t/<%= tag %>" style="background-color:<%= tag_hash[:background] %>;color:<%= tag_hash[:color] %>">#<%= tag %></a>
             <% end %>
           </div>
         <% end %>
+        <%# if the article has a collection id  %>
       </header>
       <% if @article.collection_id %>
+      <%# it renders the collection html page %>
+      <%# if the reader has a collection or related articles with current article at top %>
         <%= render "articles/collection", position: "top" %>
       <% end %>
+      <%#  %>
       <div class="body" data-article-id="<%= @article.id %>" id="article-body" itemprop="articleBody">
+        <%# renders the content of the article itself %>
+        <%# render html of content list at top of the element if the article is big %>
         <%= @article.processed_html.html_safe %>
       </div>
+      <%# if there is markdown and the markdown size is > 900 and there is a collection for that article %>
       <% if @article.body_markdown && @article.body_markdown.size > 900 && @article.collection_id %>
+      <%# the rest of the collection displays at the bottom %>
         <%= render "articles/collection", position: "bottom" %>
       <% end %>
+      <%# render the articles actions  %>
       <%= render "articles/actions" %>
     </article>
+    <%# if it is markdown adn the article is large %>
     <% if @article.body_markdown && @article.body_markdown.size > 900 %>
+    <%# cache the article if its long to help load it faster %>
       <% cache("article-about-author-#{@user.id}-#{@user.updated_at}", expires_in: 100.hours) do %>
+      <%# render the articles about the author %>
         <%= render "articles/about_author" %>
       <% end %>
     <% end %>
+    <%# renders the branding for the organization %>
     <%= render "articles/org_branding", organization: @organization %>
+    <%# render the comments for this article %>
     <%= render "articles/full_comment_area" %>
   </div>
+  <%# caches the article  %>
   <% cache("article-bottom-content-#{@article.id}", expires_in: 18.hours) do %>
+  <%# suggests related classic article to read next %>
     <% @classic_article = Suggester::Articles::Classic.new(@article, not_ids: [@article.id]).get.first %>
     <% if @classic_article %>
+    <%# if there is a classic article render that information %>
       <%= render "additional_content_boxes/article_box",
                  article: @classic_article,
                  classification: "classic",
                  classification_text: "Classic DEV Post from #{@classic_article.readable_publish_date}",
                  follow_cue: "Follow <a href='#{@classic_article.user.path}'>@#{@classic_article.user.username}</a> to see more of their posts in your feed." %>
     <% end %>
+
     <div id="additional-content-area" data-article-id="<%= @article.id %>,<%= @classic_article&.id %>"></div>
+    <%# creates a article suggester article object that recommends up to 4 suggested articles %>
     <% suggested_articles = ArticleSuggester.new(@article).articles(max: 4) %>
+    <%# it displays these articles at the bottom of the page %>
     <%= render "articles/bottom_content", articles: suggested_articles %>
   <% end %>
 </div>
-
+<%# loads the navigation stuff on the right and left side that doesn't change as the page changes %>
 <% stick_nav_cache_key = "sticky-sidebar-#{@article.id}-#{(@organization || @user).profile_updated_at}-#{(@organization || @user).last_article_at}-#{@variant_number}-#{(@organization || @user).pro?}" %>
 <% cache(stick_nav_cache_key, expires_in: 50.hours) do %>
+<%# renders the html for that side bar %>
   <%= render "articles/sticky_nav" %>
 <% end %>
 
+<%# saves the extra scripts for faster reloading %>
 <% cache("specific-article-extra-scripts-#{@article.id}-#{@article.updated_at}", expires_in: 24.hours) do %>
+<%# if there is a video %>
   <% if has_vid?(@article) %>
+  <%# render the fitvid %>
     <%= render "articles/fitvids" %>
   <% end %>
   <% if @article.processed_html.include? 'class="twitter-tweet"' %>
@@ -218,6 +287,7 @@
   <% end %>
 <% end %>
 
+<%# cache the html from the different tags %>
 <% cache("article-show-scripts", expires_in: 8.hours) do %>
   <script async>
     <%= TweetTag.script.html_safe %>
@@ -228,5 +298,5 @@
     <%= PollTag.script.html_safe %>
   </script>
 <% end %>
-
+<%# import the webshare package %>
 <%= javascript_pack_tag "webShare", defer: true %>

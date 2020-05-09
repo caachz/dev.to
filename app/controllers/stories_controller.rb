@@ -35,13 +35,21 @@ class StoriesController < ApplicationController
 
   def show
     @story_show = true
+    # if acticle exists render article show page
     if (@article = Article.find_by(path: "/#{params[:username].downcase}/#{params[:slug]}")&.decorate)
+      # renders applicable page depending on params passed in
       handle_article_show
+      require "pry"; binding.pry
+      # if article doesn't exist render error not found
     elsif (@article = Article.find_by(slug: params[:slug])&.decorate)
+      # if the user of the article is the one asking send them to a specific page or if there is an organization for this article send them to another page.
       handle_possible_redirect
     else
+      # else look for a podcast
       @podcast = Podcast.available.find_by!(slug: params[:username])
+      # find the specific podcast episode
       @episode = PodcastEpisode.available.find_by!(slug: params[:slug])
+      # render the podcast show page
       handle_podcast_show
     end
   end
@@ -83,15 +91,24 @@ class StoriesController < ApplicationController
   end
 
   def handle_possible_redirect
+    # assigns potential username to the params user name with @ added to it
     potential_username = params[:username].tr("@", "").downcase
+    # look up user by potential username
     @user = User.find_by("old_username = ? OR old_old_username = ?", potential_username, potential_username)
+    # if the user has an article with the slug passed in params
     if @user&.articles&.find_by(slug: params[:slug])
+      # send them to the username/slug path
       redirect_to URI.parse("/#{@user.username}/#{params[:slug]}").path
+      # break out of method
       return
+      # else if the organization assigned previously matches the articles organization
     elsif (@organization = @article.organization)
+      # send them to the organization/slug page
       redirect_to URI.parse("/#{@organization.slug}/#{params[:slug]}").path
+      # break out of method
       return
     end
+    # otherwise render not found error code.
     not_found
   end
 
@@ -211,15 +228,20 @@ class StoriesController < ApplicationController
   end
 
   def redirect_if_show_view_param
+    # if the uri returns moderate redirect user to internal/articles path
     redirect_to "/internal/articles/#{@article.id}" if params[:view] == "moderate"
   end
 
   def handle_article_show
+    # calls this method to assign the variables we will need in the show
     assign_article_show_variables
+    # sets the key header to the record key that is stored on the article
     set_surrogate_key_header @article.record_key
+    # redirects to internal articles path if the user is a moderator
     redirect_if_show_view_param
+    # checking if redirect_if_show_view_param was performed. If it was it breaks out of the method otherwise it renders the template
     return if performed?
-
+    # renders the articles show page
     render template: "articles/show"
   end
 
@@ -236,12 +258,19 @@ class StoriesController < ApplicationController
   end
 
   def assign_article_show_variables
+    # assigns article show variable to true
     @article_show = true
+    # if there isn't valid params generate a random number if user is signed in.
     @variant_number = params[:variant_version] || (user_signed_in? ? 0 : rand(2))
+    # jumps to assigning user method
     assign_user_and_org
+    # if article has comments that include discuss return 50 else return 30
     @comments_to_show_count = @article.cached_tag_list_array.include?("discuss") ? 50 : 30
+    # if article is written with multiple authors those ar found
     assign_second_and_third_user
+    # returns 404 not found if the user doesn't have permission
     not_found if permission_denied?
+    # creates a new comment if the article has a comment template
     @comment = Comment.new(body_markdown: @article&.comment_template)
   end
 
@@ -250,11 +279,14 @@ class StoriesController < ApplicationController
   end
 
   def assign_user_and_org
+    # if an article has a user assign that to @user else assign not found
     @user = @article.user || not_found
+    # assign a value to organization if an article has an organization
     @organization = @article.organization if @article.organization_id.present?
   end
 
   def assign_second_and_third_user
+    # assigns user if you write an article with multiple authors.
     return if @article.second_user_id.blank?
 
     @second_user = User.find(@article.second_user_id)

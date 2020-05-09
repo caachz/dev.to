@@ -1,15 +1,19 @@
 <div class="card my-3" data-controller="article" data-article-id="<%= article.id %>">
   <div class="card-header">
+    <!-- dynamicaly adding path and article for the article -->
     <a href="<%= article.path %>" target="_blank"><%= article.title %></a>
+    <!-- target blank open a new tab, badge is likely doing conditional rendering based on log in status -->
     <a class="ml-2" href="<%= article.path %>/edit" target="_blank"><span class="badge badge-success">EDIT</span></a>
   </div>
   <div
+  <%# conditional checking if the article has not been published, article has been published to a feed, and the article does not have a user and the article does not have feed admin publish permission%>
     class="card-body <%= "bg-danger" if !article.published? && article.published_from_feed? && !article.user&.feed_admin_publish_permission? %>">
+    <%# assigning variable featured to featured or approved %>
     <% featured = article.featured ? "featured-bg" : "" %>
     <% featured = article.approved ? "approved-bg" : featured %>
-
+<%# button allows to manager users %>
     <button class="btn btn-primary float-right" href="/internal/users/<%= article.user_id %>">Manage User</button>
-
+<%# if there is a video it says it contains a video %>
     <% if article.video %>
     <h2>Contains Video</h2>
     <% end %>

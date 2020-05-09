@@ -61,6 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   def internal_navigation?
+    # assigns the params to "i" if the user is an internal user
     params[:i] == "i"
   end
   helper_method :internal_navigation?
