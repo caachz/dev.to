@@ -35,11 +35,16 @@ class StoriesController < ApplicationController
 
   def show
     @story_show = true
+    # if article exists, render article show page
     if (@article = Article.find_by(path: "/#{params[:username].downcase}/#{params[:slug]}")&.decorate)
+      # renders applicable page depending on params passed in
       handle_article_show
+      # if article doesn't exist, render error not found
     elsif (@article = Article.find_by(slug: params[:slug])&.decorate)
+      # if the user of the article is the one asking send them to a specific page or if there is an organization for this article send them to anotehr page
       handle_possible_redirect
     else
+      # else look for a podcast, specific episode, render podcast show page
       @podcast = Podcast.available.find_by!(slug: params[:username])
       @episode = PodcastEpisode.available.find_by!(slug: params[:slug])
       handle_podcast_show
@@ -83,15 +88,21 @@ class StoriesController < ApplicationController
   end
 
   def handle_possible_redirect
+    # assigns potential_username to the params the username with @ added to it
     potential_username = params[:username].tr("@", "").downcase
+    # look up user by potential username
     @user = User.find_by("old_username = ? OR old_old_username = ?", potential_username, potential_username)
+    # if the user has an article with the slug passed in params
     if @user&.articles&.find_by(slug: params[:slug])
+      # send them to the username/slug path
       redirect_to URI.parse("/#{@user.username}/#{params[:slug]}").path
       return
     elsif (@organization = @article.organization)
+      # else if the organization assigned previously matches the article's organization, send them to the organization/slug page
       redirect_to URI.parse("/#{@organization.slug}/#{params[:slug]}").path
       return
     end
+    # else trigger not found error page
     not_found
   end
 
@@ -211,15 +222,20 @@ class StoriesController < ApplicationController
   end
 
   def redirect_if_show_view_param
+    # if the uri returns moderate redirect user to internal/articles path
     redirect_to "/internal/articles/#{@article.id}" if params[:view] == "moderate"
   end
 
   def handle_article_show
+    # calls this method to assign the variables we will need in the show
     assign_article_show_variables
+    # sets the key header to the record key that is stored on the article
     set_surrogate_key_header @article.record_key
+    # redirects to internal articles path if the user is a moderator
     redirect_if_show_view_param
+    # checks if redirect_if_show_view_param was performed, if yes return and break out of method, else render the template
     return if performed?
-
+    # renders the articles show page
     render template: "articles/show"
   end
 
@@ -236,11 +252,18 @@ class StoriesController < ApplicationController
   end
 
   def assign_article_show_variables
+    # sets article_show to true, if no variant version generate random number
     @article_show = true
     @variant_number = params[:variant_version] || (user_signed_in? ? 0 : rand(2))
     assign_user_and_org
+    # invokes this method ^^^
+    # if an article has a user/author assign that to @user, else assign not found
+    # assign a value to organization if an article has an organization
     @comments_to_show_count = @article.cached_tag_list_array.include?("discuss") ? 50 : 30
+    # checks if the article has comments that say discuss (tag), display 50 comments, otherwise display 30
     assign_second_and_third_user
+    # invokes this method ^^^
+    # assigns second and third authors if article has multiple
     not_found if permission_denied?
     @comment = Comment.new(body_markdown: @article&.comment_template)
   end

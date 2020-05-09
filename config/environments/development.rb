@@ -121,6 +121,9 @@ Rails.application.configure do
       end
     end
   end
+
+  config.webpacker.check_yarn_integrity = false
+
 end
 
 Rails.application.routes.default_url_options = { host: Rails.application.config.app_domain }

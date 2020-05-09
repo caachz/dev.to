@@ -399,9 +399,10 @@ Rails.application.routes.draw do
   get "/:username/comment/:id_code/delete_confirm" => "comments#delete_confirm"
   get "/:username/comment/:id_code/mod" => "moderations#comment"
   get "/:username/comment/:id_code/settings", to: "comments#settings"
-
+  # We are using this route vvv for the article show page (has show, index, update methods)
   get "/:username/:slug/:view" => "stories#show",
       :constraints => { view: /moderate/ }
+  # potentially restricts the users input into url fields so it matches the required pattern/structure
   get "/:username/:slug/mod" => "moderations#article"
   get "/:username/:slug/manage" => "articles#manage"
   get "/:username/:slug/edit" => "articles#edit"
