@@ -30,6 +30,11 @@ RSpec.describe "articles/show", type: :view do
     expect(rendered).to have_css("#main-title")
   end
 
+  it "shows user reading time of the article" do
+    render
+    expect(rendered).to have_text("#{article1.reading_time} min read")
+  end
+
   it "shows user tags" do
     render
     expect(rendered).to have_css "div.tags"
