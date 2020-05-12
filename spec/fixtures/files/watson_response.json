@@ -1,0 +1,51 @@
+{
+  "usage": {
+    "text_units": 1,
+    "text_characters": 2575,
+    "features": 1
+  },
+  "retrieved_url": "https://dev.to/vinaybommana7/django-mysql-how-to-port-your-web-application-from-sqlite-to-mysql-3jnl",
+  "language": "en",
+  "concepts": [
+    {
+      "text": "SQL",
+      "relevance": 0.980492,
+      "dbpedia_resource": "http://dbpedia.org/resource/SQL"
+    },
+    {
+      "text": "PHP",
+      "relevance": 0.711701,
+      "dbpedia_resource": "http://dbpedia.org/resource/PHP"
+    },
+    {
+      "text": "Relation",
+      "relevance": 0.534148,
+      "dbpedia_resource": "http://dbpedia.org/resource/Relation_(database)"
+    },
+    {
+      "text": "Relational model",
+      "relevance": 0.532032,
+      "dbpedia_resource": "http://dbpedia.org/resource/Relational_model"
+    },
+    {
+      "text": "Relational database",
+      "relevance": 0.492704,
+      "dbpedia_resource": "http://dbpedia.org/resource/Relational_database"
+    },
+    {
+      "text": "Database",
+      "relevance": 0.488813,
+      "dbpedia_resource": "http://dbpedia.org/resource/Database"
+    },
+    {
+      "text": "Data",
+      "relevance": 0.457908,
+      "dbpedia_resource": "http://dbpedia.org/resource/Data"
+    },
+    {
+      "text": "Data modeling",
+      "relevance": 0.455456,
+      "dbpedia_resource": "http://dbpedia.org/resource/Data_modeling"
+    }
+  ]
+}
