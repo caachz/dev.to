@@ -1492,6 +1492,24 @@ article {
   }
 }
 
+.video-box {
+  width: 30%;
+  min-width: 220px;
+  height: 220px;
+  margin: 1.5%;
+}
+
+.video-container {
+  text-align: center;
+}
+
+.video-carousel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow-x: hidden;
+}
+
 .comments-container-container {
   padding-bottom: 20px;
   border-bottom-left-radius: 3px;
