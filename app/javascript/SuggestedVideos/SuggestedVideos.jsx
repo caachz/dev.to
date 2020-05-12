@@ -1,11 +1,11 @@
 import { h } from 'preact';
 import PropTypes from 'prop-types';
 
-/* global timeAgo */
+// /* global timeAgo */
 
-export const SuggestedVideos = (props) => {
+export const SuggestedVideos = props => {
   return (
-    <section className='vid-box'>
+    <section className="vid-box">
       <h3>vid1</h3>
       <h3>vid2</h3>
       <h3>vid3</h3>
@@ -13,10 +13,6 @@ export const SuggestedVideos = (props) => {
   );
 };
 
-SuggestedVideos.defaultProps = {
+SuggestedVideos.defaultProps = {};
 
-};
-
-SuggestedVideos.propTypes = {
-
-};
+SuggestedVideos.propTypes = {};
