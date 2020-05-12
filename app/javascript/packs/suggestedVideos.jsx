@@ -1,10 +1,14 @@
 import { h, render } from 'preact';
+import { SuggestedVideos } from "../SuggestedVideos/SuggestedVideos";
 
 function loadElement() {
   const root = document.getElementById('suggested_videos');
   if (root) {
     render(
-      <h1 className="container">Video Content Will go here</h1>,
+      <h1 className="container video-carousel">
+        Video Content Will go here
+        <SuggestedVideos />
+      </h1>,
       root,
       root.firstElementChild,
     );
