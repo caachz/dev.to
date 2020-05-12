@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 export const SuggestedVideos = props => {
   return (
-    <section className="vid-box">
-      <h3>vid1</h3>
-      <h3>vid2</h3>
-      <h3>vid3</h3>
+    <section className="video-carousel">
+      <h3 className='video-box'>vid1</h3>
+      <h3 className='video-box'>vid2</h3>
+      <h3 className='video-box'>vid3</h3>
     </section>
   );
 };
