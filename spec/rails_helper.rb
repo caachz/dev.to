@@ -59,6 +59,7 @@ VCR.configure do |config|
     "github.com/mozilla/geckodriver/releases",
     "selenium-release.storage.googleapis.com",
     "developer.microsoft.com/en-us/microsoft-edge/tools/webdriver",
+    "api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/f3aa86ad-9d96-4e38-b03d-a22906278db8",
   )
 end
 
