@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe TermSuggester, type: :labor do
+RSpec.describe TermSuggester, type: :labor, vcr: {} do
   let(:user) { create(:user) }
 
   scenario "returns list of terms" do
@@ -13,7 +13,7 @@ RSpec.describe TermSuggester, type: :labor do
       response = WatsonService.get_keywords(url)
 
     create_list(:article, 4, user: user, featured: true, tags: ["discuss"])
-    article = create(:article, user: user, featured: true, tags: ["discuss"], feed_source_url: url)
-    expect(TermSuggester.get_terms(article)).to eq(4)
+    article = create(:article, user: user, featured: true, tags: ["discuss", "butts"], feed_source_url: url)
+    expect(TermSuggester.get_terms(article)).to eq(["SQL"])
   end
 end

@@ -186,7 +186,7 @@
     <%= render "articles/org_branding", organization: @organization %>
     <%= render "articles/full_comment_area" %>
   </div>
-  <section id="suggested_videos" data-searchTerms= <%= TermSuggester.get_terms(@article) %>>
+  <section id="suggested_videos" data-searchTerms= "#{<%= TermSuggester.get_terms(@article) %>}" data-searchTags= "#{<%= @article.cached_tag_list %>}">
     <%= javascript_pack_tag "suggestedVideos", defer: true %>
   </section>
   <% cache("article-bottom-content-#{@article.id}", expires_in: 18.hours) do %>
