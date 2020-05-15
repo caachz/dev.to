@@ -5,7 +5,7 @@ class WatsonService
 
   def self.keywords_json(article)
     response = conn.post("/v1/analyze?version=2019-07-12") do |c|
-      c.params["url"] = article
+      c.params["text"] = article.body_markdown
       c.params["features"] = "concepts"
       c.headers["Content-Type"] = "application/json"
     end
