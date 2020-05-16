@@ -5,7 +5,7 @@ class YoutubeService
   end
 
   def self.videos_json(search_term)
-    response = conn.get("?part=snippet&maxResults=3&q=#{search_term}&key=#{ENV['YOUTUBE_API_KEY']}")
+    response = conn.get("?part=snippet&maxResults=10&q=#{search_term}&key=#{ENV['YOUTUBE_API_KEY']}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
