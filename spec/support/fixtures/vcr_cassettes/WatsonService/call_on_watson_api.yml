@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/v1/analyze?features=concepts&url=https://dev.to/vinaybommana7/django-mysql-how-to-port-your-web-application-from-sqlite-to-mysql-3jnl&version=2019-07-12
+    uri: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/v1/analyze?features=concepts&text=---%0Atitle:%20The%20Skull%20Beneath%20the%20Skin1%0Apublished:%20true%0Atags:%20%5B%22discuss%22%5D%0Adate:%20%0Aseries:%20%0Acanonical_url:%20%0A---%0A%0AFive%20dollar%20toast%20gentrify%20sustainable.%20Chia%20microdosing%20banh%20mi%20vegan%20wayfarers%20occupy.%20Asymmetrical%20venmo%20yuccie%20fingerstache%20pug%20kickstarter%20tofu%20mumblecore.%0A%0AForage%20hella%20knausgaard%20migas%20cleanse%20xoxo%20artisan%20flannel.%0A%0A&version=2019-07-12
     body:
       encoding: UTF-8
       string: ''
@@ -12,7 +12,7 @@ http_interactions:
       Content-Type:
       - application/json
       X-Honeycomb-Trace:
-      - 1;dataset=,trace_id=a776f552-55ae-43ec-b938-7259fe643e5e,parent_id=b24d2e67-3d36-4823-97af-4086a4ed3c51,context=e30=
+      - 1;dataset=,trace_id=1a3e80c7-bc7f-4db6-aa4d-9c1c3e741b78,parent_id=6081c61a-94df-4272-b848-ce981114ad9c,context=e30=
       Content-Length:
       - '0'
       Accept-Encoding:
@@ -27,13 +27,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '1346'
+      - '686'
       X-Powered-By:
       - Express
       Cache-Control:
       - no-cache, no-store
       X-Dp-Watson-Tran-Id:
-      - fe0dc0172d605dc762af5df39be323e9
+      - 011c9d4e79aff3d3e9904e90834d6354
       Content-Security-Policy:
       - default-src 'none'
       Pragma:
@@ -47,13 +47,13 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains;
       X-Global-Transaction-Id:
-      - fe0dc0172d605dc762af5df39be323e9
+      - 011c9d4e79aff3d3e9904e90834d6354
       X-Edgeconnect-Midmile-Rtt:
-      - '24'
+      - '23'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '1340'
+      - '180'
       Date:
-      - Tue, 12 May 2020 22:42:31 GMT
+      - Fri, 15 May 2020 00:03:46 GMT
       Connection:
       - keep-alive
     body:
@@ -62,54 +62,33 @@ http_interactions:
         {
           "usage": {
             "text_units": 1,
-            "text_characters": 2575,
+            "text_characters": 333,
             "features": 1
           },
-          "retrieved_url": "https://dev.to/vinaybommana7/django-mysql-how-to-port-your-web-application-from-sqlite-to-mysql-3jnl",
           "language": "en",
           "concepts": [
             {
-              "text": "SQL",
-              "relevance": 0.980492,
-              "dbpedia_resource": "http://dbpedia.org/resource/SQL"
+              "text": "Vietnamese cuisine",
+              "relevance": 0.892544,
+              "dbpedia_resource": "http://dbpedia.org/resource/Vietnamese_cuisine"
             },
             {
-              "text": "PHP",
-              "relevance": 0.711701,
-              "dbpedia_resource": "http://dbpedia.org/resource/PHP"
+              "text": "Skull",
+              "relevance": 0.886784,
+              "dbpedia_resource": "http://dbpedia.org/resource/Skull"
             },
             {
-              "text": "Relation",
-              "relevance": 0.534148,
-              "dbpedia_resource": "http://dbpedia.org/resource/Relation_(database)"
+              "text": "Skull and Bones",
+              "relevance": 0.862208,
+              "dbpedia_resource": "http://dbpedia.org/resource/Skull_and_Bones"
             },
             {
-              "text": "Relational model",
-              "relevance": 0.532032,
-              "dbpedia_resource": "http://dbpedia.org/resource/Relational_model"
-            },
-            {
-              "text": "Relational database",
-              "relevance": 0.492704,
-              "dbpedia_resource": "http://dbpedia.org/resource/Relational_database"
-            },
-            {
-              "text": "Database",
-              "relevance": 0.488813,
-              "dbpedia_resource": "http://dbpedia.org/resource/Database"
-            },
-            {
-              "text": "Data",
-              "relevance": 0.457908,
-              "dbpedia_resource": "http://dbpedia.org/resource/Data"
-            },
-            {
-              "text": "Data modeling",
-              "relevance": 0.455456,
-              "dbpedia_resource": "http://dbpedia.org/resource/Data_modeling"
+              "text": "Soy milk",
+              "relevance": 0.82944,
+              "dbpedia_resource": "http://dbpedia.org/resource/Soy_milk"
             }
           ]
         }
     http_version: null
-  recorded_at: Tue, 12 May 2020 22:42:31 GMT
+  recorded_at: Fri, 15 May 2020 00:03:46 GMT
 recorded_with: VCR 5.1.0
