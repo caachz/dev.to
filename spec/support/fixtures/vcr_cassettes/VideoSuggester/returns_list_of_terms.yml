@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/v1/analyze?features=concepts&text=---%0Atitle:%20The%20Skull%20Beneath%20the%20Skin1%0Apublished:%20true%0Atags:%20%5B%22discuss%22%5D%0Adate:%20%0Aseries:%20%0Acanonical_url:%20%0A---%0A%0AFive%20dollar%20toast%20gentrify%20sustainable.%20Chia%20microdosing%20banh%20mi%20vegan%20wayfarers%20occupy.%20Asymmetrical%20venmo%20yuccie%20fingerstache%20pug%20kickstarter%20tofu%20mumblecore.%0A%0AForage%20hella%20knausgaard%20migas%20cleanse%20xoxo%20artisan%20flannel.%0A%0A&version=2019-07-12
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/json
+      X-Honeycomb-Trace:
+      - 1;dataset=,trace_id=08b913ef-54d0-49b9-8b77-fe2be024d9eb,parent_id=5ba45e11-ea22-4efe-8c0b-e5e9a9eb075e,context=e30=
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '37'
+      Www-Authenticate:
+      - Basic realm="IBM Watson Gateway(Log-in)"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains;
+      X-Edgeconnect-Midmile-Rtt:
+      - '20'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '192'
+      Date:
+      - Sat, 16 May 2020 19:04:17 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"code":401, "error": "Unauthorized"}'
+    http_version: null
+  recorded_at: Sat, 16 May 2020 19:04:17 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/search?key=AIzaSyDOrUy7uvek6tj4n9xasEgDdB2MQRkmOr8&maxResults=3&part=snippet&q=discuss%20%20%20Beginner%20%7C%20Software%20%7C%20Development
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      X-Honeycomb-Trace:
+      - 1;dataset=,trace_id=73c6c7de-f4c9-472c-b710-10792e2a19c9,parent_id=96a08001-cad1-4904-a7c9-28cc6093278f,context=e30=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Sat, 16 May 2020 19:04:51 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJraW5kIjogInlvdXR1YmUjc2VhcmNoTGlzdFJlc3BvbnNlIiwKICAiZXRhZyI6ICJDRVJ6MDJnVTlRV3ZFd0FVOEc4TWNHQlcxeEEiLAogICJuZXh0UGFnZVRva2VuIjogIkNBTVFBQSIsCiAgInJlZ2lvbkNvZGUiOiAiVVMiLAogICJwYWdlSW5mbyI6IHsKICAgICJ0b3RhbFJlc3VsdHMiOiAxMDAwMDAwLAogICAgInJlc3VsdHNQZXJQYWdlIjogMwogIH0sCiAgIml0ZW1zIjogWwogICAgewogICAgICAia2luZCI6ICJ5b3V0dWJlI3NlYXJjaFJlc3VsdCIsCiAgICAgICJldGFnIjogIjZBX25odUJvb2hxMC1YZXBGR29VUXktZHc1cyIsCiAgICAgICJpZCI6IHsKICAgICAgICAia2luZCI6ICJ5b3V0dWJlI3ZpZGVvIiwKICAgICAgICAidmlkZW9JZCI6ICI4WmE3QjBScWpUYyIKICAgICAgfSwKICAgICAgInNuaXBwZXQiOiB7CiAgICAgICAgInB1Ymxpc2hlZEF0IjogIjIwMTUtMDYtMDhUMTg6NTk6MzlaIiwKICAgICAgICAiY2hhbm5lbElkIjogIlVDRW9NRklHT2hpRmdXLWctekxobUhVQSIsCiAgICAgICAgInRpdGxlIjogIkV4ZWN1dGl2ZXMgRGlzY3VzcyBEZWxs4oCZcyBEZXZlbG9wbWVudCBQcm9ncmFtcyBBbmQgVGhlaXIgQmVuZWZpdHMgVG8gUmVjZW50IEdyYWR1YXRlcyIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIkRlbGwgZXhlY3V0aXZlcyBkaXNjdXNzIGhvdyB0aGUgY29tcGFueSdzIGRldmVsb3BtZW50IHByb2dyYW1zIGFyZSBjcml0aWNhbCB0byB0aGUgb3JnYW5pemF0aW9uJ3Mgb3ZlcmFsbCBncm93dGggc3RyYXRlZ3kuIExlYXJuIG1vcmUgYWJvdXQgcHJvZ3JhbXMgZm9yIC4uLiIsCiAgICAgICAgInRodW1ibmFpbHMiOiB7CiAgICAgICAgICAiZGVmYXVsdCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpLzhaYTdCMFJxalRjL2RlZmF1bHQuanBnIiwKICAgICAgICAgICAgIndpZHRoIjogMTIwLAogICAgICAgICAgICAiaGVpZ2h0IjogOTAKICAgICAgICAgIH0sCiAgICAgICAgICAibWVkaXVtIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvOFphN0IwUnFqVGMvbXFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAgICAgImhlaWdodCI6IDE4MAogICAgICAgICAgfSwKICAgICAgICAgICJoaWdoIjogewogICAgICAgICAgICAidXJsIjogImh0dHBzOi8vaS55dGltZy5jb20vdmkvOFphN0IwUnFqVGMvaHFkZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDQ4MCwKICAgICAgICAgICAgImhlaWdodCI6IDM2MAogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgImNoYW5uZWxUaXRsZSI6ICJEZWxsQ2FyZWVycyIsCiAgICAgICAgImxpdmVCcm9hZGNhc3RDb250ZW50IjogIm5vbmUiLAogICAgICAgICJwdWJsaXNoVGltZSI6ICIyMDE1LTA2LTA4VDE4OjU5OjM5WiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImtpbmQiOiAieW91dHViZSNzZWFyY2hSZXN1bHQiLAogICAgICAiZXRhZyI6ICJGZXZOTlV0am10VjhDZkxOQTRIaFZmN19Pc0EiLAogICAgICAiaWQiOiB7CiAgICAgICAgImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgICAgInZpZGVvSWQiOiAiR1dWZFUwODIyS00iCiAgICAgIH0sCiAgICAgICJzbmlwcGV0IjogewogICAgICAgICJwdWJsaXNoZWRBdCI6ICIyMDE5LTA2LTIzVDEwOjE3OjE3WiIsCiAgICAgICAgImNoYW5uZWxJZCI6ICJVQ05iVXNUaExlSm5JaDExVzRWRlExWkEiLAogICAgICAgICJ0aXRsZSI6ICJEaXNjdXNzIHRoZSByb2xlIG9mIGxhbmQgcmVmb3JtcyBpbiBhZ3JpY3VsdHVyYWwgZGV2ZWxvcG1lbnQuIElkZW50aWZ5IHN1Y2Nlc3MgZmFjdG9ycyIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIkRpc2N1c3MgdGhlIHJvbGUgb2YgbGFuZCByZWZvcm1zIGluIGFncmljdWx0dXJhbCBkZXZlbG9wbWVudC4gSWRlbnRpZnkgdGhlIGZhY3RvcnMgdGhhdCB3ZXJlIHJlc3BvbnNpYmxlIGZvciB0aGUgc3VjY2VzcyBvZiBsYW5kIHJlZm9ybXMgaW4gSW5kaWEuIEFuc3dlcjogTGFuZCAuLi4iLAogICAgICAgICJ0aHVtYm5haWxzIjogewogICAgICAgICAgImRlZmF1bHQiOiB7CiAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pLnl0aW1nLmNvbS92aS9HV1ZkVTA4MjJLTS9kZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDEyMCwKICAgICAgICAgICAgImhlaWdodCI6IDkwCiAgICAgICAgICB9LAogICAgICAgICAgIm1lZGl1bSI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL0dXVmRVMDgyMktNL21xZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiAzMjAsCiAgICAgICAgICAgICJoZWlnaHQiOiAxODAKICAgICAgICAgIH0sCiAgICAgICAgICAiaGlnaCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL0dXVmRVMDgyMktNL2hxZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiA0ODAsCiAgICAgICAgICAgICJoZWlnaHQiOiAzNjAKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgICJjaGFubmVsVGl0bGUiOiAiVVBTQyBQcmVwYXJhdGlvbiIsCiAgICAgICAgImxpdmVCcm9hZGNhc3RDb250ZW50IjogIm5vbmUiLAogICAgICAgICJwdWJsaXNoVGltZSI6ICIyMDE5LTA2LTIzVDEwOjE3OjE3WiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImtpbmQiOiAieW91dHViZSNzZWFyY2hSZXN1bHQiLAogICAgICAiZXRhZyI6ICJkakN1aTh3V1NjV25mSnk1a3l3cjRJdlQ5cVUiLAogICAgICAiaWQiOiB7CiAgICAgICAgImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgICAgInZpZGVvSWQiOiAicmlpanNwQjlESVEiCiAgICAgIH0sCiAgICAgICJzbmlwcGV0IjogewogICAgICAgICJwdWJsaXNoZWRBdCI6ICIyMDE5LTAyLTEzVDE0OjUyOjI1WiIsCiAgICAgICAgImNoYW5uZWxJZCI6ICJVQzhidXRJU0Z3VC1XbDdFVjBoVUswQlEiLAogICAgICAgICJ0aXRsZSI6ICJWYWx2ZSBkZXZlbG9wZXJzIGRpc2N1c3MgUG9ydGFsIHByb2JsZW1zICAtIENTNTAmIzM5O3MgSW50cm8gdG8gR2FtZSBEZXZlbG9wbWVudCIsCiAgICAgICAgImRlc2NyaXB0aW9uIjogIkRldmVsb3BlcnMgd2hvIGNyZWF0ZWQgdGhlIGdhbWUgUG9ydGFsIGRpc2N1c3MgcHJvYmxlbXMgdGhleSBmYWNlZCBhbmQgaG93IHRoZXkgc29sdmVkIHRoZW0uIFRoaXMgYmVnaW5uZXIncyBjb3Vyc2UgdGVhY2hlcyB0aGUgZm91bmRhdGlvbnMgb2YgZ2FtZSAuLi4iLAogICAgICAgICJ0aHVtYm5haWxzIjogewogICAgICAgICAgImRlZmF1bHQiOiB7CiAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pLnl0aW1nLmNvbS92aS9yaWlqc3BCOURJUS9kZWZhdWx0LmpwZyIsCiAgICAgICAgICAgICJ3aWR0aCI6IDEyMCwKICAgICAgICAgICAgImhlaWdodCI6IDkwCiAgICAgICAgICB9LAogICAgICAgICAgIm1lZGl1bSI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL3JpaWpzcEI5RElRL21xZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiAzMjAsCiAgICAgICAgICAgICJoZWlnaHQiOiAxODAKICAgICAgICAgIH0sCiAgICAgICAgICAiaGlnaCI6IHsKICAgICAgICAgICAgInVybCI6ICJodHRwczovL2kueXRpbWcuY29tL3ZpL3JpaWpzcEI5RElRL2hxZGVmYXVsdC5qcGciLAogICAgICAgICAgICAid2lkdGgiOiA0ODAsCiAgICAgICAgICAgICJoZWlnaHQiOiAzNjAKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgICJjaGFubmVsVGl0bGUiOiAiZnJlZUNvZGVDYW1wLm9yZyIsCiAgICAgICAgImxpdmVCcm9hZGNhc3RDb250ZW50IjogIm5vbmUiLAogICAgICAgICJwdWJsaXNoVGltZSI6ICIyMDE5LTAyLTEzVDE0OjUyOjI1WiIKICAgICAgfQogICAgfQogIF0KfQo=
+    http_version: null
+  recorded_at: Sat, 16 May 2020 19:04:51 GMT
+recorded_with: VCR 5.1.0

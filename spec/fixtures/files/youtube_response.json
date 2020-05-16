@@ -1,113 +1,113 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "vLgSsOfjMaFAA5S_hmPmlbfSuec",
+  "etag": "j6rUIxzeRJYwG5So2kyHZNq6ZdU",
   "nextPageToken": "CAMQAA",
   "regionCode": "US",
   "pageInfo": {
-    "totalResults": 1000000,
+    "totalResults": 474587,
     "resultsPerPage": 3
   },
   "items": [
     {
       "kind": "youtube#searchResult",
-      "etag": "u_1wj42uiOerrWtA2SjeJpJNxqk",
+      "etag": "Ke8yDtftGmEwdSjjYhMvR-4w-7g",
       "id": {
         "kind": "youtube#video",
-        "videoId": "B1CPE6WWsAQ"
+        "videoId": "7CThukQ8b0s"
       },
       "snippet": {
-        "publishedAt": "2020-03-28T11:00:05Z",
-        "channelId": "UCerazDNo8vEcVTbBajMAoFQ",
-        "title": "Cute baby animals Videos Compilation cutest moment of the animals - Cutest Puppies #2",
-        "description": "Watch more cute Puppies compilations! https://youtube.com/playlist?list=PLDQIMVfdTGXxPPkxdmVjdkVPAtWr1Mw4D Subscribe to Cutest Puppies City to see ...",
+        "publishedAt": "2019-03-17T17:01:54Z",
+        "channelId": "UCpLdVk1C9OqNmoLvmVBZcDg",
+        "title": "Paddling a kayak in a straight line - Beginner Kayaking Tips - Kayak Hipster",
+        "description": "I'm often asked by new paddlers on ways to keep a kayak in a straight line. Here's a couple of tips of things I see and try to help with when paddlers are starting ...",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/B1CPE6WWsAQ/default.jpg",
+            "url": "https://i.ytimg.com/vi/7CThukQ8b0s/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/B1CPE6WWsAQ/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/7CThukQ8b0s/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/B1CPE6WWsAQ/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/7CThukQ8b0s/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "Cutest Puppies City",
+        "channelTitle": "Kayak Hipster",
         "liveBroadcastContent": "none",
-        "publishTime": "2020-03-28T11:00:05Z"
+        "publishTime": "2019-03-17T17:01:54Z"
       }
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "sWu_9LAWZYMMaun9tduwIfZCwbA",
+      "etag": "gRUdT5bARq048kDZXsdt6NbRZzo",
       "id": {
         "kind": "youtube#video",
-        "videoId": "Dtv67hy782A"
+        "videoId": "x8mmAu7ZR9Y"
       },
       "snippet": {
-        "publishedAt": "2019-12-24T09:00:43Z",
-        "channelId": "UC5ggtACLoJ3Ro8RNNgKfcvA",
-        "title": "😍 Cute Puppies Doing Funny Things 2019 😍 #2 | Cute VN",
-        "description": "Thank you for watching, I hope you enjoyed! ▷ Watch more cute animal compilations! https://youtube.com/playlist?list=UU5ggtACLoJ3Ro8RNNgKfcvA Credit: ...",
+        "publishedAt": "2014-06-30T14:51:28Z",
+        "channelId": "UCzoVCacndDCfGDf41P-z0iA",
+        "title": "Bodil Stokke: Reactive Game Development For The Discerning Hipster [JSConf2014]",
+        "description": "To most people in JS, functional programmers are perceived as academic hipsters raving about things like applicative functors, semigroup homomorphisms and ...",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/Dtv67hy782A/default.jpg",
+            "url": "https://i.ytimg.com/vi/x8mmAu7ZR9Y/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/Dtv67hy782A/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/x8mmAu7ZR9Y/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/Dtv67hy782A/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/x8mmAu7ZR9Y/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "Cute VN",
+        "channelTitle": "JSConf",
         "liveBroadcastContent": "none",
-        "publishTime": "2019-12-24T09:00:43Z"
+        "publishTime": "2014-06-30T14:51:28Z"
       }
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "2K43lNHIyt_G_qoekx83XebJOSs",
+      "etag": "GzJCEFLpOyIEW7oVNHiPHQoDWqQ",
       "id": {
         "kind": "youtube#video",
-        "videoId": "dzG1TL3CjEs"
+        "videoId": "gFyZEtN3d_k"
       },
       "snippet": {
-        "publishedAt": "2020-05-03T10:00:14Z",
-        "channelId": "UC5ggtACLoJ3Ro8RNNgKfcvA",
-        "title": "😍 Cute Puppies Doing Funny Things 2020 😍 #8 | Cute VN",
-        "description": "Thank you for watching, I hope you enjoyed! ▷ Watch more cute animal compilations! https://youtube.com/playlist?list=UU5ggtACLoJ3Ro8RNNgKfcvA ...",
+        "publishedAt": "2013-12-20T14:00:03Z",
+        "channelId": "UCzWQYUVCpZqtN93H8RR44Qw",
+        "title": "New Software Tells If You&#39;re A Hipster",
+        "description": "There's a new piece of software out there that can identify a whole lot more about you than your name via Facebook. By analyzing a photo of you alone, it can ...",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/dzG1TL3CjEs/default.jpg",
+            "url": "https://i.ytimg.com/vi/gFyZEtN3d_k/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/dzG1TL3CjEs/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/gFyZEtN3d_k/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/dzG1TL3CjEs/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/gFyZEtN3d_k/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "Cute VN",
+        "channelTitle": "Seeker",
         "liveBroadcastContent": "none",
-        "publishTime": "2020-05-03T10:00:14Z"
+        "publishTime": "2013-12-20T14:00:03Z"
       }
     }
   ]
