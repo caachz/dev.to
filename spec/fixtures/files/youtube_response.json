@@ -1,0 +1,114 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "j6rUIxzeRJYwG5So2kyHZNq6ZdU",
+  "nextPageToken": "CAMQAA",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 474587,
+    "resultsPerPage": 3
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Ke8yDtftGmEwdSjjYhMvR-4w-7g",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "7CThukQ8b0s"
+      },
+      "snippet": {
+        "publishedAt": "2019-03-17T17:01:54Z",
+        "channelId": "UCpLdVk1C9OqNmoLvmVBZcDg",
+        "title": "Paddling a kayak in a straight line - Beginner Kayaking Tips - Kayak Hipster",
+        "description": "I'm often asked by new paddlers on ways to keep a kayak in a straight line. Here's a couple of tips of things I see and try to help with when paddlers are starting ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/7CThukQ8b0s/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/7CThukQ8b0s/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/7CThukQ8b0s/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Kayak Hipster",
+        "liveBroadcastContent": "none",
+        "publishTime": "2019-03-17T17:01:54Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "gRUdT5bARq048kDZXsdt6NbRZzo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "x8mmAu7ZR9Y"
+      },
+      "snippet": {
+        "publishedAt": "2014-06-30T14:51:28Z",
+        "channelId": "UCzoVCacndDCfGDf41P-z0iA",
+        "title": "Bodil Stokke: Reactive Game Development For The Discerning Hipster [JSConf2014]",
+        "description": "To most people in JS, functional programmers are perceived as academic hipsters raving about things like applicative functors, semigroup homomorphisms and ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/x8mmAu7ZR9Y/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/x8mmAu7ZR9Y/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/x8mmAu7ZR9Y/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "JSConf",
+        "liveBroadcastContent": "none",
+        "publishTime": "2014-06-30T14:51:28Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "GzJCEFLpOyIEW7oVNHiPHQoDWqQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "gFyZEtN3d_k"
+      },
+      "snippet": {
+        "publishedAt": "2013-12-20T14:00:03Z",
+        "channelId": "UCzWQYUVCpZqtN93H8RR44Qw",
+        "title": "New Software Tells If You&#39;re A Hipster",
+        "description": "There's a new piece of software out there that can identify a whole lot more about you than your name via Facebook. By analyzing a photo of you alone, it can ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gFyZEtN3d_k/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gFyZEtN3d_k/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gFyZEtN3d_k/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Seeker",
+        "liveBroadcastContent": "none",
+        "publishTime": "2013-12-20T14:00:03Z"
+      }
+    }
+  ]
+}
