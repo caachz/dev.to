@@ -19,6 +19,8 @@ class VideoSuggester
   def self.get_youtube_videos(tags, terms)
     search_terms = "#{tags.split(',').join(' | ')} + #{terms.join(' | ')}"
     raw_json = YoutubeService.get_videos(search_terms)[:items]
+
+    raw_json.to_json
   end
 
 end
