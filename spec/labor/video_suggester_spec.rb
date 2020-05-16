@@ -12,8 +12,6 @@ RSpec.describe VideoSuggester, type: :labor, vcr: {} do
 
       url = 'https://dev.to/vinaybommana7/django-mysql-how-to-port-your-web-application-from-sqlite-to-mysql-3jnl'
 
-      # create_list(:article, 4, user: user, featured: true, tags: ["discuss"])
-
       article = create(:article, user: user, featured: true, tags: "non-dairy, hipster", feed_source_url: url, body_markdown: "---\ntitle: The Skull Beneath the Skin1\npublished: true\ntags: [\"discuss\"]\ndate: \nseries: \ncanonical_url: \n---\n\nFive dollar toast gentrify sustainable. Chia microdosing banh mi vegan wayfarers occupy. Asymmetrical venmo yuccie fingerstache pug kickstarter tofu mumblecore.\n\nForage hella knausgaard migas cleanse xoxo artisan flannel.\n\n")
       expect(VideoSuggester.get_videos(article)[0][:snippet][:title]).to eq("Executives Discuss Dell’s Development Programs And Their Benefits To Recent Graduates")
 
