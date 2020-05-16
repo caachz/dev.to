@@ -4,13 +4,12 @@ import { SuggestedVideos } from '../SuggestedVideos/SuggestedVideos';
 function loadElement() {
   const root = document.getElementById('suggested_videos');
   if (root) {
-    const { searchTerms, searchTags } = root.dataset;
+    const { videos } = root.dataset;
     render(
       <h1 className="container video-container">
         Suggested Videos!
         <SuggestedVideos
-          searchTerms={searchTerms}
-          searchTags={searchTags}
+          videos={JSON.parse(videos)}
         />
       </h1>,
       root,
